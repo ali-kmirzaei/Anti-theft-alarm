@@ -9,7 +9,7 @@ DURATION = 0.5  # seconds
 FREQ = 440  # Hz
 COUNT = 0
 ##################################################################################################
-def logging(action):
+def alarm_log(action):
     os.system('play -nq -t alsa synth {} sine {}'.format(DURATION, FREQ))
     log_file.write('{}\n'.format(action))
 
@@ -17,17 +17,17 @@ def on_move(x, y):
     global COUNT
     COUNT += 1
     if COUNT > 10:
-        logging('mouse moved')
+        alarm_log('mouse moved')
         COUNT = 0
 
 def on_click(x, y, button, pressed):
-    logging('mouse clicked')
+    alarm_log('mouse clicked')
 
 def on_scroll(x, y, dx, dy):
-    logging('mouse scrolled')
+    alarm_log('mouse scrolled')
 
 def on_press(key):
-    logging('key pressed')
+    alarm_log('key pressed')
 
 def on_release(key):
     if key == Key.shift_r:
